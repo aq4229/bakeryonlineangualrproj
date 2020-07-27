@@ -1,0 +1,63 @@
+%!Adobe-FontList 1.18
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:E:\Website's\Bakerywebsite\Font\Apostrophic Labs License.txt
+FileModTime:1520376640
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Scriptina
+FamilyName:Scriptina
+StyleName:Regular
+FullName:Scriptina
+MenuName:Scriptina
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:E:\Website's\Bakerywebsite\Font\scriptina.ttf
+DataFormat:sfntData
+hasSVG:no
+FileLength:105084
+FileModTime:1520376640
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Scriptina
+NameArray:0,Win,1,Scriptina
+NameArray:0,Win,16,Scriptina
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:E:\Website's\Bakerywebsite\Font\ScriptinaPro.woff
+FileModTime:1394891688
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:Scriptina-Alternates
+FamilyName:Scriptina - Alternates
+StyleName:Regular
+FullName:Scriptina - Alternates
+MenuName:Scriptina - Alternates
+StyleBits:0
+WritingScript:Roman
+OutlineFileName:E:\Website's\Bakerywebsite\Font\scriptina_alt.ttf
+DataFormat:sfntData
+hasSVG:no
+FileLength:11652
+FileModTime:1520376640
+WeightClass:400
+WidthClass:5
+AngleClass:0
+NameArray:0,Mac,4,Scriptina - Alternates
+NameArray:0,Win,1,Scriptina - Alternates
+NameArray:0,Win,16,Scriptina - Alternates
+%EndFont
+
