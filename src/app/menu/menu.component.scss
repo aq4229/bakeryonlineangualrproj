@@ -1,0 +1,265 @@
+.carousel-item>img {
+    height: 100vh;
+    width: 100%;
+}
+
+.item1 {
+    background-image: url('../../assets/images/menu-slider5.png');
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.item_sub1 {
+    position: absolute;
+    top: -260px;
+    left: -260px;
+    transition: all 1.5s ease-out 0.2s;
+}
+
+.item_sub2 {
+    position: absolute;
+    top: -429px;
+    left: -49.7%;
+    transition: all 1.5s ease-out 0.2s;
+}
+
+.item_sub3 {
+    position: absolute;
+    top: -190px;
+    right: -329px;
+    transition: all 1.5s ease-out 0.2s;
+}
+
+.item_sub4 {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    transition: all 1.5s ease-out 0.2s;
+}
+
+.item_sub5 {
+    position: absolute;
+    top: -580px;
+    right: -562px;
+    transition: all 1.5s ease-out 0.2s;
+}
+
+.carousel-indicators li {
+    background-color: black;
+}
+
+.carousel-indicators .active {
+    background-color: #abc710;
+}
+
+.upcoming_product {
+    height: 100vh;
+    overflow: hidden;
+    /* background-image: url('images/50.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+
+.upcoming_product>.wrapper {
+    background: linear-gradient(rgba(45, 45, 45, 0.8) 0%, rgba(45, 45, 45, 0.15) 100%);
+    display: block;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 90vh;
+}
+
+.upitem1 {
+    transition: all 0.5s linear 0.5s;
+    position: relative;
+    background-image: url('../../assets/images/brown-pie-on-tray-3223494.jpg');
+    background-size: cover;
+    cursor: pointer;
+}
+
+.overlay {
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s linear 0.5s;
+}
+
+.upitem1:hover>.overlay {
+    opacity: 1;
+    transition: all 0.2s linear 0.2s;
+    position: static;
+    height: 100%;
+}
+
+.upitem2 {
+    transition: all 0.5s linear 0.5s;
+    position: relative;
+    background-image: url('../../assets/images/cherry-pie-with-stars-on-top-2361503.jpg');
+    cursor: pointer;
+    background-size: cover;
+}
+
+.upitem2:hover .overlay {
+    opacity: 1;
+}
+
+.upitem3 {
+    transition: all 0.5s linear 0.5s;
+    position: relative;
+    background-image: url('../../assets/images/pastry-on-cake-stand-1453465.jpg');
+    cursor: pointer;
+    background-size: cover;
+}
+
+.upitem3:hover .overlay {
+    opacity: 1;
+}
+
+.overlay {
+    background-color: #00000080;
+}
+
+.overlay ul {
+    font-size: 19px;
+    word-spacing: 5px;
+    line-height: 39px;
+}
+
+.production_details {
+    background: linear-gradient(rgba(45, 45, 45, 0.8) 0%, rgba(45, 45, 45, 0.15) 100%);
+}
+
+.products_items {
+    margin: 15px auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 30px;
+}
+
+.products_items>div:hover .overlayitem {
+    height: 100%;
+    cursor: pointer;
+    background: linear-gradient(rgba(45, 45, 45, 0.8) 0%, rgba(45, 45, 45, 0.15) 100%);
+    width: 100%;
+}
+
+.p_item1 {
+    background-size: cover;
+    height: 35vh;
+    background-image: url('../../assets/images/51.jpg');
+}
+
+.p_item2 {
+    background-size: cover;
+    height: 35vh;
+    background-image: url('../../assets/images/55.jpg');
+}
+
+.p_item3 {
+    background-size: cover;
+    height: 35vh;
+    background-image: url('../../assets/images/56.jpg');
+}
+
+.p_item4 {
+    background-size: cover;
+    height: 35vh;
+    background-image: url('../../assets/images/57.jpg');
+}
+
+.p_item5 {
+    background-size: cover;
+    height: 35vh;
+    background-image: url('../../assets/images/54.jpg');
+}
+
+.p_item6 {
+    background-size: cover;
+    height: 35vh;
+    background-image: url('../../assets/images/58.jpg');
+}
+
+.breakfast>div>h5 {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.breakfast>div>h5>a {
+    padding: 0 0 14px 0;
+    transition: color 0.2s;
+}
+
+.breakfast>div>h5>a:hover {
+    color: #e1be64!important;
+    cursor: pointer;
+}
+
+.breakfast>div h5:before {
+    content: '';
+    width: 88%;
+    z-index: -1;
+    left: 0px;
+    border-bottom: 2px solid black;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+}
+
+.breakfast>div>p {
+    padding-top: 14px;
+}
+
+.breadmenu>div>.nav>li>a:hover {
+    text-decoration: none;
+    color: #e1be64;
+}
+
+.breadmenu>div>.nav>li>a.active {
+    text-decoration: none;
+    color: #e1be64;
+}
+
+.breadalternate {
+    background-image: url('../../assets/images/breadmenu.jpg');
+    background-size: cover;
+    display: grid;
+    height: 100vh;
+}
+
+.nav {
+    position: relative;
+    border-right: 3px solid grey;
+}
+
+.nav>li {
+    transition: all 0.6s;
+    padding: 14px 0;
+}
+
+.nav>li>a.active:after {
+    content: '';
+    border-right: 3px solid #e1be64;
+    position: absolute;
+    right: -3px;
+    z-index: 10000;
+    width: 2px;
+    height: 34px;
+}
+
+.nav>li>a:hover:after {
+    content: '';
+    border-right: 3px solid #e1be64;
+    position: absolute;
+    right: -3px;
+    z-index: 10000;
+    width: 2px;
+    height: 34px;
+}
+
+.overlayitem {
+    height: 100%;
+    width: 100%;
+}

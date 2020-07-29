@@ -29,14 +29,15 @@
                         ],
                         "styles": [
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
-                            "node_modules/@fortawesome/fontawesome-free/css/fontawesome.css",
+                            "node_modules/font-awesome/css/font-awesome.min.css",
+                            "node_modules/slick-carousel/slick/slick.css",
+                            "node_modules/slick-carousel/slick/slick-theme.css",
                             "src/styles.scss"
                         ],
                         "scripts": [
                             "node_modules/jquery/dist/jquery.slim.min.js",
-                            "node_modules/bootstrap/dist/js/bootstrap.min.js",
-                            "node_modules/@fortawesome/fontawesome-free/js/fontawesome.min.js"
-
+                            "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+                            "node_modules/slick-carousel/slick/slick.js"
                         ]
                     },
                     "configurations": {
