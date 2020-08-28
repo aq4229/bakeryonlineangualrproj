@@ -1,90 +1,139 @@
-<p>reservation works!</p>
-<ul class="date list-unstyled text-center responsive row multiple-items">
-
-</ul>
+<!-- Button trigger modal -->
 
 
-<div class="row pt-2 pt-md-3 pb-1 time-slots-container">
-    <div class="col-md-3 col-lg-2 py-1 pb-2 text-capitalize text-dark-muted text-sm"><svg width="20px" height="20px" class="mr-2" viewBox="0 0 314.46 306.01">
-    <use xlink:href="#morning-svg"></use>
-</svg><span>Morning</span></div>
-    <div class="col-md-9 col-lg-10">
-        <div class="row">
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">10:00 AM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">10:10 AM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">10:20 AM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">10:30 AM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">10:40 AM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">10:50 AM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">11:00 AM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">11:10 AM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">11:20 AM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">11:30 AM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">11:40 AM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">11:50 AM</a></div>
+
+<div class="container-fluid">
+    <ul class="nav nav-tabs mt-5">
+        <li class="nav-item m-2" *ngFor="let d of dates; index as i">
+            <a class="nav-link border" data-toggle="tab" [href]="'#a'+i"> {{d.days}} {{d.date}} {{d.month}}
+          </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade container-fluid " [id]="'a'+i" *ngFor="let item of dates; index as i">
+            {{i}}
+            <div *ngIf="item.days !== 'Sun'; else nextavail">
+                <ul class="list-unstyled text-center row">
+                    <h2> Morning </h2>
+                    <li *ngFor="let t of timing; index as i">
+                        <a class=" " *ngIf="t.Morning">
+                            <button type="button" class="btn btn-outline-success m-2" data-toggle="modal" [attr.data-target]="'#' + item.month + item.date + i">
+                                  {{t.Morning}}
+                          </button>
+                            <!-- Modal -->
+                            <div class="modal fade" [id]="item.month + item.date + i" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">{{t.Morning}}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h3 class="text-left"> Morning </h3>
+                                            <h4>{{item.month + item.date}}</h4>
+                                            <input type="text" placeholder="Enter your Mobile No" class="form-control">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" [value]="item.date+ '-' + item.month + '-' + item.year" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="list-unstyled text-center row">
+                    <h2> Afternoon </h2>
+                    <li *ngFor="let t of timing; index as i">
+                        <a *ngIf="t.Afternoon">
+                            <button type="button" class="btn btn-outline-warning m-2" data-toggle="modal" [attr.data-target]="'#' + item.month +  item.date + i  ">
+                                {{t.Afternoon}} 
+                            </button>
+
+                            <div class="modal fade" [id]="item.month + item.date + i" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Afternoon</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4> {{item.month + item.date}} </h4>
+                                            <h3 class="text-left"> {{t.Afternoon}} </h3>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" [value]="item.date+ '-' + item.month + '-' + item.year">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="list-unstyled text-center row">
+                    <h2> Evening </h2>
+                    <li *ngFor="let t of timing; index as i">
+                        <a class=" " *ngIf="t.Evening ">
+                            <button type="button" class="btn btn-outline-danger m-2" data-toggle="modal" [attr.data-target]="'#' + item.month + item.date + i ">
+                              {{t.Evening}}
+                      </button>
+                            <!-- Modal -->
+                            <div class="modal fade" [id]="item.month + item.date + i" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Evening</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h3 class="text-left"> {{t.Evening}} </h3>
+                                            <h4>{{item.month + item.date}}</h4>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" [value]="item.date+ '-' + item.month + '-' + item.year">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <ng-template #nextavail>
+                <h2><a data-toggle="tab" class="nav-link border" [href]='"#"+ i+1'>Please Check the Next Availability </a></h2>
+            </ng-template>
+
+
         </div>
     </div>
-    <div class="col-md-3 col-lg-2 py-1 pb-2 text-capitalize text-dark-muted text-sm">
-        <svg width="20px" height="20px" class="mr-2" viewBox="0 0 314.46 306.01">
-    <use xlink:href="#afternoon-svg"></use>
-</svg><span>Afternoon</span></div>
-    <div class="col-md-9 col-lg-10">
-        <div class="row">
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">12:00 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">12:10 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">12:20 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">12:30 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">12:40 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">12:50 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">01:00 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">01:10 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">01:20 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">01:30 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">01:40 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">01:50 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">02:00 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">02:10 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">02:20 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">02:30 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">02:40 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">02:50 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">03:00 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">03:10 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">03:20 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">03:30 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">03:40 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">03:50 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">04:00 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">04:10 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">04:20 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">04:30 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">04:40 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">04:50 PM</a></div>
-        </div>
-    </div>
-    <div class="col-md-3 col-lg-2 py-1 pb-2 text-capitalize text-dark-muted text-sm"><svg width="20px" height="20px" class="mr-2" viewBox="0 0 314.46 306.01">
-    <use xlink:href="#evening-svg"></use>
-</svg><span>Evening</span></div>
-    <div class="col-md-9 col-lg-10">
-        <div class="row">
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">05:00 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">05:10 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">05:20 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">05:30 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">05:40 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">05:50 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">06:00 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">06:10 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">06:20 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">06:30 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">06:40 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">06:50 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">07:00 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">07:10 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">07:20 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">07:30 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">07:40 PM</a></div>
-            <div class="col-3 col-md-4 col-lg-3 col-xl-2 time-slot"><a href="#modal-login" data-toggle="modal" data-target="#modal-login" class="btn-time-selected p-1 btn btn-block btn-outline-warning mb-2 white-space-normal text-dark py-2 body-textsize-sm" data-modal="modal-login" tabindex="0">07:50 PM</a></div>
-        </div>
-    </div>
-</div>
+    <!-- <section class="regular slider ">
+  <div>
+      <img src="http://placehold.it/350x300?text=1 ">
+  </div>
+  <div>
+      <img src="http://placehold.it/350x300?text=2 ">
+  </div>
+  <div>
+      <img src="http://placehold.it/350x300?text=3 ">
+  </div>
+  <div>
+      <img src="http://placehold.it/350x300?text=4 ">
+  </div>
+  <div>
+      <img src="http://placehold.it/350x300?text=5 ">
+  </div>
+  <div>
+      <img src="http://placehold.it/350x300?text=6 ">
+  </div>
+</section> -->
